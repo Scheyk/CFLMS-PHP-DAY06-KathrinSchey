@@ -1,0 +1,12 @@
+.self {
+    width: 25em;
+}
+
+.welcome {
+    float: right;    
+}
+
+.form {
+    width: 50em;
+    margin: auto;
+}
