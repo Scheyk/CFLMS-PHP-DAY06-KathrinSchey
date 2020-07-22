@@ -28,6 +28,8 @@
 
 		$row = $result->fetch_assoc();
 	}
+
+	$conn->close();
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +68,7 @@
 	<h2>Update Car</h2>
 
 <div class="form">
-<form action="actions/function_add.php" method="post">
+<form action="actions/function_update_car.php" method="post">
 	<input type="hidden" name="id" value="<?php echo $row['id']?>">
 	<div class="form-group">
     <label for="car_img">Img:</label>
@@ -90,7 +92,7 @@
   </div>
   <div class="form-group">
     <label for="arrivel">Arrivel:</label>
-	<select name="arrivel" id="arrivel" value="<?php echo $row['arrivel']?>">
+	<select name="arrivel" value="<?php echo $row['arrivel']?>">
 		<option value="yes">Yes</option>
 		<option value="no">No</option>
 	</select>    

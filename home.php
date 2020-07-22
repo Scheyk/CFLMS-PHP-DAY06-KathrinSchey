@@ -18,7 +18,7 @@
 	$res = mysqli_query($conn, "SELECT * FROM `users` WHERE userId=".$_SESSION['user']);
 	$userRow = mysqli_fetch_array($res, MYSQLI_ASSOC);
 
-	$resCar = mysqli_query($conn, "SELECT * FROM cars");
+	$resCar = mysqli_query($conn, "SELECT * FROM cars WHERE arrivel = 'yes'");
 ?>
 
 <!DOCTYPE html>
@@ -58,23 +58,23 @@
 	    <?php
 		include 'actions/db_connecting.php';
 
-		$sql = "SELECT * FROM cars";
-		$result = mysqli_query($conn, $sql);
+		// $sql = "SELECT * FROM cars";
+		// $result = mysqli_query($conn, $sql);
 
-		if($result->num_rows == 0) {
+		if($resCar->num_rows == 0) {
 
 			echo "no data inside";
 
-		}elseif (mysqli_num_rows($result) == 1) {
+		}elseif (mysqli_num_rows($resCar) == 1) {
 
-			$row = $result->fetch_assoc();
-			echo $row["company"]." ".$row["typ"]." ".$row["year_of"]." ".$row["price"]." ".$row["arrivel"]." <a href='book_car.php?id=".$value["id"]."'>book</a><br>";
+			$row = $resCar->fetch_assoc();
+			echo $row["car_img"]." ". $row["company"]." ". $row["typ"]." ". $row["year_of"]." ".$row["price"]. " ".$row["arrivel"]." <a href='book_car.php?id=".$value["id"]."'>book</a><br>";
 
 		}else {
 
-			$rows = $result->fetch_all(MYSQLI_ASSOC);
+			$rows = $resCar->fetch_all(MYSQLI_ASSOC);
 			foreach ($rows as $value) {
-				echo $value["company"]." ".$value["typ"]." ".$value["year_of"]." ".$value["price"]." ".$value["arrivel"]." <a href='book_car.php?id=".$value["id"]."'>book</a><br>";
+				echo $value["car_img"]." ".$value["company"]." ".$value["typ"]." ".$value["year_of"]." ".$value["price"]. " ".$value["arrivel"]." <a href='book_car.php?id=".$value["id"]."'>book</a><br>";
 
 			}
 		}

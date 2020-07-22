@@ -16,7 +16,7 @@
 			echo "success <br>
 			 	  <a href='../admin.php'>back home</a>";
 		} else {
-			error3;
+			echo error3;
 		}
 	}
 ?>
